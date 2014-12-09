@@ -11,3 +11,4 @@ apt-get -y install jenkins
 
 echo "1"
 echo "2"
+echo "3"
