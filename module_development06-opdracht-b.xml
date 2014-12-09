@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_development06-opdracht-b" default="compile.module.development06-opdracht-b">
+  <dirname property="module.development06-opdracht-b.basedir" file="${ant.file.module_development06-opdracht-b}"/>
+  
+  <property name="module.jdk.home.development06-opdracht-b" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.development06-opdracht-b" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.development06-opdracht-b" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.development06-opdracht-b" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="development06-opdracht-b.output.dir" value="${module.development06-opdracht-b.basedir}/target/classes"/>
+  <property name="development06-opdracht-b.testoutput.dir" value="${module.development06-opdracht-b.basedir}/target/test-classes"/>
+  
+  <path id="development06-opdracht-b.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="development06-opdracht-b.module.production.classpath">
+    <path refid="${module.jdk.classpath.development06-opdracht-b}"/>
+  </path>
+  
+  <path id="development06-opdracht-b.runtime.production.module.classpath">
+    <pathelement location="${development06-opdracht-b.output.dir}"/>
+  </path>
+  
+  <path id="development06-opdracht-b.module.classpath">
+    <path refid="${module.jdk.classpath.development06-opdracht-b}"/>
+    <pathelement location="${development06-opdracht-b.output.dir}"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+  </path>
+  
+  <path id="development06-opdracht-b.runtime.module.classpath">
+    <pathelement location="${development06-opdracht-b.testoutput.dir}"/>
+    <pathelement location="${development06-opdracht-b.output.dir}"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.development06-opdracht-b">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.development06-opdracht-b">
+    <patternset refid="excluded.from.module.development06-opdracht-b"/>
+  </patternset>
+  
+  <path id="development06-opdracht-b.module.sourcepath">
+    <dirset dir="${module.development06-opdracht-b.basedir}">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="development06-opdracht-b.module.test.sourcepath">
+    <dirset dir="${module.development06-opdracht-b.basedir}">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.development06-opdracht-b" depends="compile.module.development06-opdracht-b.production,compile.module.development06-opdracht-b.tests" description="Compile module Development06-Opdracht-B"/>
+  
+  <target name="compile.module.development06-opdracht-b.production" depends="register.custom.compilers" description="Compile module Development06-Opdracht-B; production classes">
+    <mkdir dir="${development06-opdracht-b.output.dir}"/>
+    <javac2 destdir="${development06-opdracht-b.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.development06-opdracht-b}/javac">
+      <compilerarg line="${compiler.args.development06-opdracht-b}"/>
+      <bootclasspath refid="development06-opdracht-b.module.bootclasspath"/>
+      <classpath refid="development06-opdracht-b.module.production.classpath"/>
+      <src refid="development06-opdracht-b.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.development06-opdracht-b"/>
+    </javac2>
+    
+    <copy todir="${development06-opdracht-b.output.dir}">
+      <fileset dir="${module.development06-opdracht-b.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.development06-opdracht-b.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.development06-opdracht-b.tests" depends="register.custom.compilers,compile.module.development06-opdracht-b.production" description="compile module Development06-Opdracht-B; test classes" unless="skip.tests">
+    <mkdir dir="${development06-opdracht-b.testoutput.dir}"/>
+    <javac2 destdir="${development06-opdracht-b.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.development06-opdracht-b}/javac">
+      <compilerarg line="${compiler.args.development06-opdracht-b}"/>
+      <bootclasspath refid="development06-opdracht-b.module.bootclasspath"/>
+      <classpath refid="development06-opdracht-b.module.classpath"/>
+      <src refid="development06-opdracht-b.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.development06-opdracht-b"/>
+    </javac2>
+    
+    <copy todir="${development06-opdracht-b.testoutput.dir}">
+      <fileset dir="${module.development06-opdracht-b.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.development06-opdracht-b" description="cleanup module">
+    <delete dir="${development06-opdracht-b.output.dir}"/>
+    <delete dir="${development06-opdracht-b.testoutput.dir}"/>
+  </target>
+</project>
