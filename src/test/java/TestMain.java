@@ -1,9 +1,8 @@
-import org.junit.Test;
-import static org.junit.Assert.*;
+//import static org.junit.Assert.*;
 
 public class TestMain {
 
-    @Test
+    /*@Test
     public void testPasses() {
         String expected = "Hello, JUnit!";
         String hello = "Hello, JUnit!";
@@ -28,5 +27,5 @@ public class TestMain {
         int uitkomst = Main.reken(4, 6);
         int expected = 10;
         assertEquals(uitkomst, expected);
-    }
+    }*/
 }
