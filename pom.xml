@@ -8,12 +8,24 @@
     <artifactId>JUnit</artifactId>
     <version>1.1</version>
 
+    <repositories>
+        <repository>
+            <id>java.net</id>
+            <url>https://maven.java.net/content/repositories/public/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jvnet.localizer</groupId>
+            <artifactId>localizer</artifactId>
+            <version>1.8</version>
         </dependency>
     </dependencies>
 
