@@ -10,3 +10,4 @@ apt-get update
 apt-get -y install jenkins
 
 echo "1"
+echo "2"
