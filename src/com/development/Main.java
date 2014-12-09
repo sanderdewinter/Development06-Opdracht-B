@@ -3,7 +3,7 @@ package com.development;
 public class Main {
 
     public static void main(String[] args) {
-        reken(4,3);
+        reken(4,2);
     }
 
     private static int reken(int getalA,int getalB){
